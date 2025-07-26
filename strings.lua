@@ -22,5 +22,25 @@ function data()
             modFeat2 = "No Animals",
             modFeatDesc2 = "Enable or disable spawning of animals",
         },
+        id = {
+            modName = "Indonesia Fever",
+            modDesc =
+                "Modpack yang mengandung aset dan modifikasi dasar yang merepresentasikan budaya dan infrastruktur Indonesia" ..
+                nl ..
+                "[h2][b]Daftar fitur :[/b][/h2]" .. nl ..
+                "[list]" .. nl ..
+                "[*]Fitur earn achievements with mods yang dapat di toggle." .. nl ..
+                "[*]Nama kota, jalan, dan orang dalam bahasa Indonesia." .. nl ..
+                "[*]Menghapus tekstur footpaths." .. nl ..
+                "[*]Warna terrain yang lebih bagus." .. nl ..
+                "[*]Tidak ada batu dan pohon secara acak" .. nl ..
+                "[*]Tidak ada hewan" .. nl ..
+                "[/list]",
+            modCountry = "Indonesia",
+            modFeat1 = "Earn Achievements with Mods",
+            modFeatDesc1 = "Enable or disable earning achievements with mods",
+            modFeat2 = "No Animals",
+            modFeatDesc2 = "Enable or disable spawning of animals",
+        },
     }
 end
