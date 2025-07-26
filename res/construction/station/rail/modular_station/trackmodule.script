@@ -1,0 +1,21 @@
+local trainstationutil = require "modules.trainstationutil"
+local vec3 = require "vec3"
+local transf = require "transf"
+local modulesutil = require "modulesutil"
+
+function data()
+return {
+	updateFn = function(result, transform, tag, slotId, addModuleFn, params, closureParams)
+		local edgeListNum = trainstationutil.findOrMakeNewEdgeListNum(result, closureParams.trackType, closureParams.catenary)
+		return trainstationutil.makeTrack(result, transform, tag, slotId, addModuleFn, params, edgeListNum)
+	end,
+	getModelsFn = function(variant, closureParams)
+		return {
+			-- { 
+			-- 	id = "station/rail/cargo/station_1_main_end_l.mdl",
+			-- 	transf = transf.rotZTransl(math.rad(-90), vec3.new(15,0,0)),
+			-- }
+		}
+	end
+}
+end

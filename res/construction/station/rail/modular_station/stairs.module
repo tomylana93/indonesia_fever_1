@@ -1,0 +1,71 @@
+local transf = require "transf"
+local vec3 = require "vec3"
+local modulesutil = require "modulesutil"
+
+function data()
+
+return { 
+	availability = {
+		yearFrom = 0,
+		yearTo = 0,
+	},
+	cost = {
+		price = 2000,
+	},
+	description = {
+		name = _("Side entrance"),
+		description = _("Street access for passengers and cargo."),
+		icon = "ui/construction/station/rail/modular_station/stairs.tga"
+	}, 
+	category = {
+		categories = { "misc", },
+	},
+	type = "rail_stairs",
+	order = {
+		value = 700,
+	},
+	
+	updateFn = function(result, transform, tag, slotId, addModuleFn, params)
+	
+		
+		local faces = {
+			{5.0,  -5.0, 0.0, 1.0},
+			{5.0,  5.0,  0.0, 1.0},
+			{-1.0, 5.0,  0.0, 1.0},
+			{-1.0, -5.0, 0.0, 1.0},
+		}
+		modulesutil.TransformFaces(transform, faces)
+		local faces2 = { type = "EQUAL", faces = {  faces } }
+		table.insert(result.terrainAlignmentLists, faces2)
+		
+		table.insert(result.groundFaces, {  
+			face = faces,
+			modes = {
+				{
+					type = "FILL",
+					key = "shared/asphalt_01.gtex.lua"
+				},
+				{
+					type = "STROKE_OUTER",
+					key = "street_border.lua"
+				},
+			},
+		})
+		
+		addModuleFn("station/rail/era_a/stairs.mdl", transf.rotZTransl(math.rad(90), vec3.new(0,0,0)))
+	end,
+	
+	getModelsFn = function()
+		
+		local result = {
+			{ 
+				id = "station/rail/era_a/stairs.mdl",
+				transf = transf.rotZTransl(math.rad(90), vec3.new(0,0,0)),
+			},
+		}
+		
+		return result
+	end
+}
+
+end
